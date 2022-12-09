@@ -1,6 +1,9 @@
 package format
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Format struct {
 	DisableColors bool
@@ -22,6 +25,9 @@ func (c *Format) colorNibble(n uint8) string {
 }
 
 func (c *Format) Instruction(opcode uint16, name string, suffix string) string {
+	if len(name) < 4 {
+		name += strings.Repeat(" ", 4-len(name))
+	}
 	return fmt.Sprintf("%s    %s %s", c.Opcode(opcode), c.InstructionName(name), suffix)
 }
 
