@@ -28,7 +28,7 @@ func (c *Format) Instruction(opcode uint16, name string, suffix string) string {
 	if len(name) < 4 {
 		name += strings.Repeat(" ", 4-len(name))
 	}
-	return fmt.Sprintf("%s    %s %s", c.Opcode(opcode), c.InstructionName(name), suffix)
+	return fmt.Sprintf("%s        %s %s", c.Opcode(opcode), c.InstructionName(name), suffix)
 }
 
 func (c *Format) InstructionName(text string) string {
@@ -36,7 +36,7 @@ func (c *Format) InstructionName(text string) string {
 }
 
 func (c *Format) UnknownInstruction(opcode uint16) string {
-	return fmt.Sprintf("%s    %s", c.Opcode(opcode), c.Unknown())
+	return fmt.Sprintf("%s        %s", c.Opcode(opcode), c.Unknown())
 }
 
 func (c *Format) Unknown() string {
